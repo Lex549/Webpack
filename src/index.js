@@ -62,43 +62,24 @@ const data = {
       },
     ],
     footer: "Copyleft © 2022 👽 Lex Lopez 👻",
-  };
-
-const socialNetworks = () => {
-  let networks = data?.social.map((network) => {
-    return ` <a href="${network.url}" target="_blank">
-                  <svg class="w-8 h-8 cursor-pointer text-gray-400 hover:text-[#E4405F] fill-current" role="img" 
-                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                  <path d="${network.path}"/></svg>
-              </a>       
-    `;
-  }).join('')
-  
- $networks.innerHTML = networks;
-
-}
+};
 
 const main = () => {
   let name = document.createTextNode(data?.name);
-  let nickname = document.createElement(data?.nickname);
-  let footer = document.createTextNode(data?.footer);
   let links = data?.links?.map((link) => {
     return `<div class="bg-${link.color}-200 px-4 py-5 w-full flex justify-between">
-              <a class="text-sm font-bold text-${link.color}-600 text-center hover:text-${link.color}-800 cursor-pointer"
-             href="${link.url}" target="_blank">
-             ${link.name}
-              </a>
+          <a class="text-sm font-bold text-${link.color}-600 text-center hover:text-${link.color}-800 cursor-pointer"
+            href="${link.url}" target="_blank">
+            ${link.name}
+          </a>
           <span>${link.emoji}</span>
         </div>`
   }).join('');
-  
 
   let newItem = document.createElement('section');
   newItem.innerHTML = links;
   $links.appendChild(newItem);
   $name.appendChild(name);
-  $footer.appendChild(footer);
 }
 
-socialNetworks();
 main();
